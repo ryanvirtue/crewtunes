@@ -1,0 +1,23 @@
+I"ü(function() {
+  this.PauseButton = React.createClass({
+    stop: function() {
+      var mopidy;
+      mopidy = new Mopidy({
+        autoConnect: false,
+        webSocketUrl: 'ws://localhost:6680/mopidy/ws/'
+      });
+      mopidy.connect();
+      mopidy.on('state:online', function() {
+        return mopidy.playback.pause();
+      });
+    },
+    render: function() {
+      return React.DOM.button({
+        onClick: this.stop,
+        className: 'btn fa fa-pause fa-4'
+      });
+    }
+  });
+
+}).call(this);
+:ET

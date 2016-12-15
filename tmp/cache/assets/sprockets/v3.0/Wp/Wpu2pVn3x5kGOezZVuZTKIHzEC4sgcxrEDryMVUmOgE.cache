@@ -1,0 +1,23 @@
+I"(function() {
+  this.PlayButton = React.createClass({
+    play: function() {
+      var mopidy;
+      mopidy = new Mopidy({
+        autoConnect: false,
+        webSocketUrl: 'ws://localhost:6680/mopidy/ws/'
+      });
+      mopidy.connect();
+      mopidy.on('state:online', function() {
+        return mopidy.playback.play(mopidy.playback.getCurrentTrack);
+      });
+    },
+    render: function() {
+      return React.DOM.button({
+        className: 'btn fa fa-play fa-4',
+        onClick: this.play
+      });
+    }
+  });
+
+}).call(this);
+:ET

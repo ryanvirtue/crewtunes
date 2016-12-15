@@ -1,0 +1,13 @@
+!!! 5
+%html
+  %head
+    %title Crewtunes
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'http://localhost:6680/mopidy/mopidy.min.js'
+    = csrf_meta_tags
+  %body
+    = render partial: 'shared/header'
+    .container
+      = yield

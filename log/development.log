@@ -1,0 +1,125 @@
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/ryanvirtue/Documents/Learning/Projects/crewtunes/config/environment.rb:5)
+  [1m[35m (0.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "crewtunes/development"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "crewtunes/test"[0m
+  [1m[35m (538.7ms)[0m  [1m[35mCREATE DATABASE "crewtunes/development" ENCODING = 'utf8'[0m
+  [1m[35m (407.2ms)[0m  [1m[35mCREATE DATABASE "crewtunes/test" ENCODING = 'utf8'[0m
+  [1m[35m (29.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8337970286538566415);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20160607081603)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160607081603"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-12-15 07:30:25 UTC], ["updated_at", 2016-12-15 07:30:25 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(8337970286538566415)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/ryanvirtue/Documents/Learning/Projects/crewtunes/app/models/user.rb:1)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ryan@ryanvirtue.nz"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "ryan@ryanvirtue.nz"], ["encrypted_password", "$2a$11$u0VUa2CZCNA3JwC8F3P3G.4ZLf4WobndEb4hcL2s3loUAxNjKpeQe"], ["created_at", 2016-12-15 07:31:47 UTC], ["updated_at", 2016-12-15 07:31:47 UTC]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/ryanvirtue/Documents/Learning/Projects/crewtunes/app/models/user.rb:1)
+Started GET "/" for 127.0.0.1 at 2016-12-15 20:32:13 +1300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SiteController#index as HTML
+Completed 401 Unauthorized in 21ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-12-15 20:32:13 +1300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.haml within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.haml within layouts/application (24.7ms)
+  Rendered shared/_header.haml (2.9ms)
+Completed 200 OK in 6099ms (Views: 6082.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/application.self-f48a13eb3318725ae498020c25328d68ad13ec4717419da1211e5a3f2a96a08a.css?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/global.self-129ae9d94d9b02404fde8c95475cf68b887399e0d0ce1cf4d02810c646856c40.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/collapsible.self-f750f59687df0254e7c8551ee8f9dd7760ff414bd58b3dfa5c6b7ca9f339d047.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/dropdown.self-14bb35657a4d36f75511ac8b7e2462bd3d722f632989f33cc72184a71b57b522.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/modal.self-d8e758bee1fc4f982d27bde848c55711c5d4b544582e2e9a3aea817f8c0216e0.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/materialbox.self-e8e28686032e93f500d756bbf6dedeb69439cd8af4d1ca2732ee6ded8a77dbd9.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/parallax.self-5375f9f62fd8c9aaaba9ebca276180df1f102f575fff294e15ff56c15bcc25ba.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/scrollspy.self-7b7c280d198b38204b8ddd00e0936f8ee4c4a6bc728740233035ffc08bf99961.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/sideNav.self-da20dba95ebafbd44f9a065adbb507874d040245d01fa4edd889e4ea4611a047.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/toasts.self-966426db56709c13c339e94f7d8190dd8d501dfd20a8083b4ceb17925b3fe535.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/tooltip.self-8510c1a8da37f40d01e4d790e228be4c3c31d395396c013b12a9d1e0ae6afb76.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/tabs.self-efd58a7fce8d8dd622a50bcf2c6d64566ac68c60ab5ac95fe1a8ae100e284463.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/forms.self-0eddaa3eff9331e407f30bcb77759c1e21560a0d02d39def869b00f00bd6daac.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/slider.self-b650f99d1b28549db2e7d5b078540fa65aabbb2548e0a378a85cc6b4285fe438.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/transitions.self-93bbc15198f7eef0645597717d777abe2b3d3202f0ae6324d648a8d3e8f6b817.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/cards.self-b78d84331c3b4ecca59db28b271bfd2cdc62d0703861ccbd13284e117b00f591.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/chips.self-75faa6eff0368d2b81319c143dfabf2ddf0e7770b075e007245ae61becb92645.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/pushpin.self-b6217071e4b33cf2ce5742d81537d6f36b046c5f8fd115a01e4239cff1acd598.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/buttons.self-b27d1a29f9142ca06ded6dee42c8668e6d7f3d5104f6d5dd04b8eef1afb7823d.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/scrollFire.self-51d8aca762cd14871dbf39aad2bc0213e799f1aa314e75c267fdfd92cfd87e0e.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/character_counter.self-6aeb1f2f7bfcbe4e54572fdaa629d7137c98d33e8b0bfd379ffb87ed0e10390a.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/materialize/carousel.self-34a2b97e1513fb51df375c3888c658b1b3cdb17add5dd8be45d7b61a5a55e2b4.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:19 +1300
+Started GET "/assets/react.self-fd40d62df8700033e9c7942e1fd575967edf44de7288b2fb6f342d0e4395099a.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/materialize-sprockets.self-1374c0ecff9f5520ea4a144c5754ae434cfea5ca52ec9af6e9916f20bd9275ed.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_mount.self-169a668bfd47eb081c36fa9e36ed23fa4d6088ff552a2065a64a571fc3c29837.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_turbolinks_classic.self-763df8fa4c0b0551840f5244b265843641523ad3bf7bb308d20801ac5cde2acb.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_turbolinks.self-19cb50a828b179c80e0ef6463ceb612ae3e75f377fb2dd6f4afdc3b46ae75d56.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_turbolinks_classic_deprecated.self-f93fc4217cec084020eaf90b0425c454ba18d4ee1a054f254f5dba461eaab1a4.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_pjax.self-e8fc58103934b6c8054d5fbfe37ec92f2ef7719bc90566026fe9fe19e0e2cf45.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_native.self-69da92af440ae3f522e7294876ed2bae234447ee564d1619c9f69d53e1020a8a.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs_event_setup.self-0cd254aea0ec32dd175eff42a443f912c283295c0235384ae7cd425cd8f7c3e5.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/react_ujs.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/artist.self-6177709f823fb36b5ebbccb3f8c6038c6a46689b558ef8560fa4713f740bc79e.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/player_controls/add_button.self-5cfad3f054b1bf76d46ab52b8efae3f1cc4331a24453f6074efc203f3b586995.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/player_controls/next_button.self-75159f518e321e1953aa432506c74b90770f91be08e1bfef4b1633cce9c6e525.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/player_controls/pause_button.self-9823db10bad28657efd68066e2ffd7a66370dd1ff83ba156d2675e453270ad91.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/player_controls/play_button.self-dd0f07853c7943c1832fda60c94aeca06995b3a8fc7366ea1f592c3c17f36c25.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/player_controls/stop_button.self-336d83360ecbc6379823ea5b42f3efffec032e20adefb0283c7e5f6df24229aa.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/mopidy.self-2e73b0834f58589d037bd9891d4f2eb4c6ce6b8264280b3c0089d352c4cb33dd.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/dashboard.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/application.self-16c207b3ca1b52afcfc7f4b662487caf1bbe084a6656bb15f693ab9de2d11be7.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components/spotify/spotify_search.self-7229c22ed0c22eedba309a1bbba03ff69e4ddb3def33f056d82d88cb3d51744f.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+Started GET "/assets/components.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js?body=1" for 127.0.0.1 at 2016-12-15 20:32:20 +1300
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/ryanvirtue/Documents/Learning/Projects/crewtunes/app/models/user.rb:1)
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-12-15 20:32:50 +1300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n/eUEaXsNm//TAfZzZ8iLeoueUKphzr2XvQl+gdAM/PaMrcWpkOh7N6/6Af4T2laK4jD3faN/r/dyXmm9rTAYA==", "user"=>{"email"=>"ryan@ryanvirtue.nz", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "ryan@ryanvirtue.nz"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2016-12-15 07:32:50 UTC], ["last_sign_in_at", 2016-12-15 07:32:50 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", 2016-12-15 07:32:50 UTC], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/dashboard
+Completed 302 Found in 202ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/dashboard" for 127.0.0.1 at 2016-12-15 20:32:50 +1300
+Processing by DashboardController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering dashboard/index.haml within layouts/application
+  Rendered dashboard/index.haml within layouts/application (2.2ms)
+  Rendered shared/_nav.haml (1.5ms)
+  Rendered shared/_header.haml (4.9ms)
+Completed 200 OK in 630ms (Views: 625.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2" for 127.0.0.1 at 2016-12-15 20:32:51 +1300
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/ryanvirtue/Documents/Learning/Projects/crewtunes/app/models/user.rb:1)
+Started GET "/assets/roboto/Roboto-Bold-8b84b2abc336ee61f48a28a697b6ace2333ea5f1868aa15d5aeb2c7beac6d716.woff2" for 127.0.0.1 at 2016-12-15 20:33:52 +1300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

@@ -1,0 +1,28 @@
+I"¶(function() {
+  this.AddButton = React.createClass({
+    addTrack: function() {
+      var mopidy, uri;
+      uri = this.props.uri;
+      mopidy = new Mopidy({
+        autoConnect: false,
+        webSocketUrl: 'ws://localhost:6680/mopidy/ws/'
+      });
+      mopidy.connect();
+      mopidy.on('state:online', function() {
+        mopidy.library.lookup(uri).done(function(track) {
+          return mopidy.tracklist.add([track[0]]);
+        });
+      });
+    },
+    render: function() {
+      return React.DOM.button({
+        "class": this.props["class"],
+        uri: this.props.uri,
+        className: 'btn fa fa-plus fa-4',
+        onClick: this.addTrack
+      });
+    }
+  });
+
+}).call(this);
+:ET
