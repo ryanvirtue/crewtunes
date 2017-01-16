@@ -4,7 +4,7 @@
     uri = @props.uri
     mopidy= new Mopidy(
       autoConnect: false
-      webSocketUrl: 'ws://localhost:6680/mopidy/ws/'
+      webSocketUrl: 'ws://192.168.0.41:6600/mopidy/ws/'
     )
 
     mopidy.connect()
