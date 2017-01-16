@@ -4,6 +4,7 @@
     mopidy = new Mopidy(
       autoConnect: false
       webSocketUrl: 'ws://192.168.0.41:6600/mopidy/ws/'
+      callingConvention: 'by-position-or-by-name'
     )
 
     mopidy.connect()
