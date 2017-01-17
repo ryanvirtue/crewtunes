@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'dotenv-rails'
+gem 'dotenv-heroku'
 
 # AUTH
 gem 'devise'
