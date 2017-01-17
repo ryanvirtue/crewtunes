@@ -24,6 +24,7 @@
       return).bind(this)
 
   render: ->
+    @getCurrentTrack()
     window.setTimeout(@getCurrentTrack, 60000)
 #    React.DOM.div null,
 #      onLoad: @getCurrentTrack()
