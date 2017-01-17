@@ -107,10 +107,7 @@
                       else
                         "Artist image" #TODO Add placeholder image
                     React.DOM.td null,
-                      React.DOM.a
-                        href: 'artist/'
-                        props: artist
-                        artist.name
+                      artist.name
 
       if @state.albums.length > 0
         React.DOM.div

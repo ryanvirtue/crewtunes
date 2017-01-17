@@ -4,7 +4,7 @@
   getTracklist: ->
     mopidy= new Mopidy(
       autoConnect: false
-      webSocketUrl: 'ws://192.168.0.41:6600/mopidy/ws/'
+      webSocketUrl: "ws://#{gon.server_ip}:#{gon.server_port}/mopidy/ws/"
     )
 
     mopidy.connect()

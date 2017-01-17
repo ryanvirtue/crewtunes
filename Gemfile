@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'dotenv-rails'
+
 # AUTH
 gem 'devise'
 
@@ -11,6 +14,7 @@ gem 'materialize-sass'
 
 # JS
 gem 'coffee-rails', '~> 4.1.0'
+gem 'gon'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'react-rails'
