@@ -5,6 +5,10 @@
     playing_title: ''
     playing_artist: ''
     playing_album: ''
+    playing_album_image: ''
+
+  componentDidMount: ->
+    @getCurrentTrack()
 
   getCurrentTrack: ->
     mopidy= new Mopidy(
@@ -16,18 +20,15 @@
 
     mopidy.on 'state:online', (->
       mopidy.playback.getCurrentTlTrack().done ((data) ->
-        @setState
-          playing_title: data.track.name
-          playing_artist: data.track['artists'][0].name
-          playing_album: data.track['album'].name
+        if data
+          @setState
+            playing_title: data.track.name
+            playing_album: data.track['album'].name
+            playing_artist: data.track['artists'][0].name
         return).bind(this)
       return).bind(this)
 
   render: ->
-    @getCurrentTrack()
-    window.setTimeout(@getCurrentTrack, 60000)
-#    React.DOM.div null,
-#      onLoad: @getCurrentTrack()
     React.DOM.div null,
       React.DOM.h5 null,
         @state.playing_title
@@ -35,3 +36,6 @@
         @state.playing_artist
       React.DOM.p null,
         @state.playing_album
+      React.createElement('TrackList')
+
+

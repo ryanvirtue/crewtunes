@@ -1,6 +1,6 @@
-@AddButton = React.createClass
+@FlushButton = React.createClass
 
-  addTrack: ->
+  flushTrack: ->
     uri = @props.uri
     mopidy= new Mopidy(
       autoConnect: false
@@ -10,17 +10,13 @@
 
     mopidy.connect()
     mopidy.on 'state:online', ->
-      mopidy.library.lookup(uri).done (track) ->
-        mopidy.tracklist.add([track[0]])
-        mopidy.tracklist.setConsume(true)
-      return
-
+      mopidy.tracklist.clear()
     return
 
   render: ->
     React.DOM.button
       className: @props.class
       uri: @props.uri
-      className: 'waves-effect waves-dark btn fa fa-plus fa-4'
-      onClick: @addTrack
-      title: 'Add Track'
+      className: 'waves-effect waves-dark btn fa fa-times fa-4'
+      onClick: @flushTrack
+      title: 'Flush Play Queue'

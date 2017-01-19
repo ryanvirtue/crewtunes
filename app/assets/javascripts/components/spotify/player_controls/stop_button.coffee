@@ -14,4 +14,5 @@
   render: ->
     React.DOM.button
       onClick: @stop
-      className: 'fa-stop fa-4'
+      className: 'waves-effect waves-dark btn fa-stop fa-4'
+      title: 'Stop'

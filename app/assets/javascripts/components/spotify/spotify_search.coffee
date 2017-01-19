@@ -43,13 +43,15 @@
         React.DOM.div
           className: 'player-action'
           React.createElement NextButton,
+        React.DOM.div
+          className: 'player-action'
+          React.createElement FlushButton,
 
       React.DOM.input
         type: 'text'
         onChange: @handleChange
         placeholder: 'Track, Artist, Album'
         onKeyPress: @handleKeyPress
-
       if @state.tracks.length > 0
           React.DOM.div
             className: 'fetch-tracks'
@@ -80,9 +82,11 @@
                     React.DOM.td null,
                       track.album.name
                     React.DOM.td null,
-                      React.createElement AddButton,
-                        className: 'btn-floating btn-large waves-effect waves-light'
-                        uri: track.uri
+                      React.DOM.div
+                        className: 'player-action'
+                        React.createElement AddButton,
+                          className: 'btn-floating btn-large waves-effect waves-light'
+                          uri: track.uri
 
         if @state.artists.length > 0
           React.DOM.div
@@ -130,8 +134,3 @@
                       src: album.images[2].url
                   React.DOM.td null,
                     album.name
-
-
-
-
-

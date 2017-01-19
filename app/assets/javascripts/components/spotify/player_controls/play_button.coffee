@@ -13,5 +13,6 @@
 
   render: ->
     React.DOM.button
-      className: 'btn fa fa-play fa-4'
+      className: 'waves-effect waves-dark btn fa fa-play fa-4'
       onClick: @play
+      title: 'Play'

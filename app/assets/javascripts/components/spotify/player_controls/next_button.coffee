@@ -14,4 +14,5 @@
   render: ->
     React.DOM.button
       onClick: @next
-      className: 'btn fa fa-step-forward fa-4'
+      className: 'waves-effect waves-dark btn fa fa-step-forward fa-4'
+      title: 'Next Track'
