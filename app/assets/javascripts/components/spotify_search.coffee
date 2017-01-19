@@ -82,11 +82,8 @@
                     React.DOM.td null,
                       track.album.name
                     React.DOM.td null,
-                      React.DOM.div
-                        className: 'player-action'
-                        React.createElement AddButton,
-                          className: 'btn-floating btn-large waves-effect waves-light'
-                          uri: track.uri
+                      React.createElement AddButton,
+                        uri: track.uri
 
         if @state.artists.length > 0
           React.DOM.div

@@ -5,7 +5,9 @@
     playing_title: ''
     playing_artist: ''
     playing_album: ''
+    playing_length: null
     playing_album_image: ''
+    time_position: null
 
   componentDidMount: ->
     @getCurrentTrack()
@@ -25,6 +27,12 @@
             playing_title: data.track.name
             playing_album: data.track['album'].name
             playing_artist: data.track['artists'][0].name
+            playing_length: data.track.length
+        return).bind(this)
+
+      mopidy.playback.getTimePosition().then ((data) ->
+        @setState
+          time_position: data
         return).bind(this)
       return).bind(this)
 
@@ -37,5 +45,3 @@
       React.DOM.p null,
         @state.playing_album
       React.createElement('TrackList')
-
-

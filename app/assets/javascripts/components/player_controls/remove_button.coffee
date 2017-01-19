@@ -1,7 +1,7 @@
 @RemoveButton = React.createClass
 
   removeTrack: ->
-    uri = @props.uri
+    tlid = @props.tlid
     mopidy= new Mopidy(
       autoConnect: false
       webSocketUrl: "ws://#{gon.server_ip}:#{gon.server_port}/mopidy/ws/"
@@ -9,7 +9,9 @@
 
     mopidy.connect()
     mopidy.on 'state:online', ->
-      mopidy.tracklist.remove()
+      mopidy.tracklist.remove({tlid: [tlid]}).done ->
+        getTrackList()
+      return
     return
 
   render: ->
@@ -18,4 +20,4 @@
       uri: @props.uri
       className: 'waves-effect waves-dark btn fa fa-times fa-4'
       onClick: @removeTrack
-      title: 'Flush Play Queue'
+      title: 'Remove Track'

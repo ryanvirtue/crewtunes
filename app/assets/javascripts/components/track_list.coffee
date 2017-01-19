@@ -16,17 +16,16 @@
 
     mopidy.on 'state:online', (->
       mopidy.tracklist.getTlTracks().done ((data) ->
-        if data
+        if data.shift()
           @setState
             tracks: data
         return).bind(this)
       return).bind(this)
 
-
-
   render: ->
     React.DOM.div null,
-      React.DOM.table null,
+      React.DOM.table
+        className: 'tracks bordered striped'
         React.DOM.thead null,
           React.DOM.tr null,
             React.DOM.th null,
@@ -44,10 +43,9 @@
                 track['track']['artists'][0]['name']
               React.DOM.td null,
                 track['track']['album']['name']
-#              React.DOM.td null,
-#                React.DOM.div
-#                  className: 'player-action'
-#                  React.createElement RemoveButton,
-#                    className: 'btn-floating btn-large waves-effect waves-light'
-#                    uri: track['track'].uri
-#
+              React.DOM.td null,
+                React.DOM.div
+                  className: 'player-action'
+                  React.createElement RemoveButton,
+                    className: 'btn-floating btn-large waves-effect waves-light'
+                    tlid: track.tlid

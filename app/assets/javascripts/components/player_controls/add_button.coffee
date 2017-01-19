@@ -14,13 +14,14 @@
         mopidy.tracklist.add([track[0]])
         mopidy.tracklist.setConsume(true)
       return
-
     return
 
   render: ->
-    React.DOM.button
-      className: @props.class
-      uri: @props.uri
-      className: 'waves-effect waves-dark btn fa fa-plus fa-4'
-      onClick: @addTrack
-      title: 'Add Track'
+    React.DOM.div
+      className: 'player-action'
+      React.DOM.button
+        className: @props.class
+        uri: @props.uri
+        className: 'waves-effect waves-dark btn fa fa-plus fa-4'
+        onClick: @addTrack
+        title: 'Add Track'
