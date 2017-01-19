@@ -1,4 +1,6 @@
+- if current_user
+  = react_component 'AdminControls'
 .card{style: 'padding: 10px;'}
   = react_component 'CurrentPlaying'
 .div
-  = react_component 'TrackList'
+  = react_component 'TrackList', session: current_user ? true : false

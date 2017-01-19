@@ -1,8 +1,10 @@
 %nav
   .container
-    = link_to 'Croutons', root_path
+    = link_to 'Croutons', root_path, style: 'font-family: Pacifico; font-size: 2em;'
     .right
-      - if current_user
-        %ul
+      %ul
+        - if current_user
           %li= link_to 'Dashboard', dashboard_index_path
           %li= link_to 'Logout', destroy_user_session_path, method: 'delete'
+        - else
+          %li= link_to 'Sign In', new_user_session_path

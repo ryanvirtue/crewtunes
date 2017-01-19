@@ -37,11 +37,14 @@
       return).bind(this)
 
   render: ->
-    React.DOM.div null,
-      React.DOM.h5 null,
-        @state.playing_title
+    if @state.playing_title
+      React.DOM.div null,
+        React.DOM.h5 null,
+          @state.playing_title
+        React.DOM.p null,
+          @state.playing_artist
+        React.DOM.p null,
+          @state.playing_album
+    else
       React.DOM.p null,
-        @state.playing_artist
-      React.DOM.p null,
-        @state.playing_album
-      React.createElement('TrackList')
+        'Nothing currently playing'

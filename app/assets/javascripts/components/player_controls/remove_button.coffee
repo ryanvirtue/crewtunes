@@ -10,7 +10,7 @@
     mopidy.connect()
     mopidy.on 'state:online', ->
       mopidy.tracklist.remove({tlid: [tlid]}).done ->
-        getTrackList()
+        window.location.reload()
       return
     return
 

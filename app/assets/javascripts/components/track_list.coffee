@@ -23,29 +23,35 @@
       return).bind(this)
 
   render: ->
+
     React.DOM.div null,
-      React.DOM.table
-        className: 'tracks bordered striped'
-        React.DOM.thead null,
-          React.DOM.tr null,
-            React.DOM.th null,
-              'Track'
-            React.DOM.th null,
-              'Artist'
-            React.DOM.th null,
-              'Album'
-        React.DOM.tbody null,
-          for track, i in @state.tracks
+      if @state.tracks.length > 0
+        React.DOM.table
+          className: 'tracks bordered striped'
+          React.DOM.thead null,
             React.DOM.tr null,
-              React.DOM.td null,
-                track['track']['name']
-              React.DOM.td null,
-                track['track']['artists'][0]['name']
-              React.DOM.td null,
-                track['track']['album']['name']
-              React.DOM.td null,
-                React.DOM.div
-                  className: 'player-action'
-                  React.createElement RemoveButton,
-                    className: 'btn-floating btn-large waves-effect waves-light'
-                    tlid: track.tlid
+              React.DOM.th null,
+                'Track'
+              React.DOM.th null,
+                'Artist'
+              React.DOM.th null,
+                'Album'
+          React.DOM.tbody null,
+            for track, i in @state.tracks
+              React.DOM.tr null,
+                React.DOM.td null,
+                  track['track']['name']
+                React.DOM.td null,
+                  track['track']['artists'][0]['name']
+                React.DOM.td null,
+                  track['track']['album']['name']
+                React.DOM.td null,
+                  React.DOM.div
+                    className: 'player-action'
+                    if @props.session
+                      React.createElement RemoveButton,
+                        className: 'btn-floating btn-large waves-effect waves-light'
+                        tlid: track.tlid
+      else
+        React.DOM.p null,
+          'No tracks are currently queued'
