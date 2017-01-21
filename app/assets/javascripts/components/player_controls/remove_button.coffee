@@ -17,7 +17,6 @@
   render: ->
     React.DOM.button
       className: @props.class
-      uri: @props.uri
       className: 'waves-effect waves-dark btn fa fa-times fa-4'
       onClick: @removeTrack
       title: 'Remove Track'

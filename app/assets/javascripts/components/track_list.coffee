@@ -38,7 +38,8 @@
                 'Album'
           React.DOM.tbody null,
             for track, i in @state.tracks
-              React.DOM.tr null,
+              React.DOM.tr
+                key: track.tlid
                 React.DOM.td null,
                   track['track']['name']
                 React.DOM.td null,

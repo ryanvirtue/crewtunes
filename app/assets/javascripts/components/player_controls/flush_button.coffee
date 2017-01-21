@@ -1,7 +1,6 @@
 @FlushButton = React.createClass
 
   flushTrack: ->
-    uri = @props.uri
     mopidy= new Mopidy(
       autoConnect: false
       webSocketUrl: "ws://#{gon.server_ip}:#{gon.server_port}/mopidy/ws/"
@@ -16,7 +15,6 @@
   render: ->
     React.DOM.button
       className: @props.class
-      uri: @props.uri
       className: 'waves-effect waves-dark btn fa fa-times fa-4'
       onClick: @flushTrack
       title: 'Flush Play Queue'

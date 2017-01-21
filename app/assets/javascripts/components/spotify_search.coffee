@@ -71,7 +71,8 @@
                     "Album"
               React.DOM.tbody null,
                 for track, i in @state.tracks
-                  React.DOM.tr null,
+                  React.DOM.tr
+                    key: track.id
                     React.DOM.td null,
                       React.DOM.img
                         src: track.album.images[2].url
@@ -100,11 +101,13 @@
                     "Name"
               React.DOM.tbody null,
                 for artist, i in @state.artists
-                  React.DOM.tr null,
+                  React.DOM.tr
+                    key: artist.id
                     React.DOM.td null,
                       if artist.images.length > 0
                         React.DOM.img
                           src: artist.images[2].url
+                          style: {width: '64px'}
                       else
                         "Artist image" #TODO Add placeholder image
                     React.DOM.td null,
@@ -125,9 +128,11 @@
                   "Album Name"
             React.DOM.tbody null,
               for album, i in @state.albums
-                React.DOM.tr null,
+                React.DOM.tr
+                  key: album.id
                   React.DOM.td null,
                     React.DOM.img
                       src: album.images[2].url
+                      style: {width: '64px'}
                   React.DOM.td null,
                     album.name
