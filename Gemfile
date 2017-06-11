@@ -22,7 +22,7 @@ gem 'react-rails'
 
 # SERVER
 gem 'unicorn'
-
+gem 'httparty'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'pg'
@@ -40,4 +40,3 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
 end
-

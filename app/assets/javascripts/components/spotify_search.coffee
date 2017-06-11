@@ -20,13 +20,14 @@
       type: 'GET'
       dataType: 'JSON'
       url: 'https://api.spotify.com/v1/search?q=' + q + '&type=track,artist,album&limit=10'
+      headers: {"Authorization": "Bearer #{gon.access_token}"}
       success: (data) =>
         @setState
           tracks: data.tracks.items
           artists: data.artists.items
           albums: data.albums.items
       error: (data) =>
-        "ERROR!"
+        console.log(data)
 
   render: ->
     React.DOM.div
@@ -79,7 +80,10 @@
                     React.DOM.td null,
                       track.name
                     React.DOM.td null,
-                      track.artists[0].name
+                      React.DOM.a
+                        href: "/artist/id:#{track.artists[0].id}/show/"
+                        artist_id: track.artists[0].id
+                        track.artists[0].name
                     React.DOM.td null,
                       track.album.name
                     React.DOM.td null,

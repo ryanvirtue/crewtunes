@@ -5,7 +5,6 @@
     mopidy= new Mopidy(
       autoConnect: false
       webSocketUrl: "ws://#{gon.server_ip}:#{gon.server_port}/mopidy/ws/"
-
     )
 
     mopidy.connect()
@@ -15,6 +14,16 @@
         mopidy.tracklist.setConsume(true)
       return
     return
+
+  # $.ajax({
+  #   url: "/product_details/show",
+  #   type: "POST",
+  #   data: {"cbo_id" : $(this).val()},
+  #   dataType: "json",
+  #   success: function(data) {
+  #      alert('successfully');
+  #    }
+  #  });
 
   render: ->
     React.DOM.div
