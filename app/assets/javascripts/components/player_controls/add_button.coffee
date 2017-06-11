@@ -1,6 +1,14 @@
 @AddButton = React.createClass
 
   addTrack: ->
+    $.ajax
+      url: "/create_history_item"
+      type: "POST"
+      data: {'track_data' : @props }
+      dataType: "json"
+      success: (data) ->
+         alert 'successfully'
+
     uri = @props.uri
     mopidy= new Mopidy(
       autoConnect: false
@@ -15,15 +23,7 @@
       return
     return
 
-  # $.ajax({
-  #   url: "/product_details/show",
-  #   type: "POST",
-  #   data: {"cbo_id" : $(this).val()},
-  #   dataType: "json",
-  #   success: function(data) {
-  #      alert('successfully');
-  #    }
-  #  });
+
 
   render: ->
     React.DOM.div
