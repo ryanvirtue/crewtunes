@@ -35,6 +35,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'byebug'
   gem 'mailcatcher'
+  gem 'pry'
 end
 
 group :development do
