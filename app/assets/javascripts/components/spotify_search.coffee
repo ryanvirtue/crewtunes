@@ -89,6 +89,13 @@
                     React.DOM.td null,
                       React.createElement AddButton,
                         uri: track.uri
+                        id: track.id
+                        href: track.href
+                        name: track.name
+                        artist_spotify_id: track.artists[0].id
+                        artist_spotify_uri: track.artists[0].uri
+                        artist_spotify_href: track.artists[0].href
+                        artist_name: track.artists[0].name
 
         if @state.artists.length > 0
           React.DOM.div
