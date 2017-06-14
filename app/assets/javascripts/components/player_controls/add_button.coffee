@@ -20,6 +20,7 @@
       mopidy.library.lookup(uri).done (track) ->
         mopidy.tracklist.add([track[0]])
         mopidy.tracklist.setConsume(true)
+        $('.' + track.id).addClass('added-track')
       return
     return
 

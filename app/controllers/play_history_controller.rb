@@ -4,7 +4,7 @@ class PlayHistoryController < ApplicationController
     @user_id = current_user.id
     find_or_create_artist
     find_or_create_track
-    TrackHistoryItem.new(track_id: @track.id, user_id: @user_id).save!
+    TrackHistoryItem.new(track_id: @track.id, user_id: @user_id, artist_id: @artist.id).save!
   end
 
   def find_or_create_track
