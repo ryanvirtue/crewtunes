@@ -1,1 +1,22 @@
 = react_component 'SpotifySearchGrid'
+
+%h3 Your Recently Played Tracks
+%table
+  %tr
+    %th
+      Date/Time Queued
+    %th
+      Track Name
+    %th
+      Artist
+    %th
+      Time Played
+    %th
+      Vetoed?
+  - @track_history.reverse.each do |history_item|
+    %tr
+      %td= history_item.created_at.in_time_zone('Wellington').strftime("%d/%m/%Y @ %I:%M%p")
+      %td= history_item.track.name
+      %td= history_item.track.artist.name
+      %td
+      %td

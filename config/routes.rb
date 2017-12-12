@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'site#index', as: :root
 
-  resources :dashboard
+  resources :dashboard, only: :index
   get 'dashboard/search'
 
   resources :artist, only: :show
